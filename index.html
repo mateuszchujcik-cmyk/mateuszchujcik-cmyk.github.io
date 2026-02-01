@@ -9,20 +9,45 @@
       height: 100%;
       margin: 0;
       display: flex;
-      justify-content: center; /* wyśrodkowanie poziome */
-      align-items: center;    /* wyśrodkowanie pionowe */
+      justify-content: center;
+      align-items: center;
       background-color: #000; /* czarne tło */
       font-family: Arial, sans-serif;
+      color: orange;
     }
 
-    h1 {
-      font-size: 160px; /* większy napis */
-      color: orange;   /* pomarańczowy */
+    #napis {
+      font-size: 80px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+
+    #napis:hover {
+      transform: scale(1.1);
+    }
+
+    #nowa-tresc {
+      font-size: 50px;
+      display: none; /* na początku ukryta */
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>burdel u sowirzdrzola</h1>
+
+  <div id="napis">burdelu sowirzdrzola</div>
+  <div id="nowa-tresc">Witaj na nowej stronie!</div>
+
+  <script>
+    const napis = document.getElementById('napis');
+    const nowaTresc = document.getElementById('nowa-tresc');
+
+    napis.addEventListener('click', () => {
+      napis.style.display = 'none';      // ukrywa stary napis
+      nowaTresc.style.display = 'block';  // pokazuje nową treść
+    });
+  </script>
+
 </body>
 </html>
