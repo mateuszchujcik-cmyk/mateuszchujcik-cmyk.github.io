@@ -1,11 +1,91 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Moja pierwsza strona</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Profesjonalna Strona</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <h1>jebac miszora sowirzdrzola 👋</h1>
-  <p>To jest moja strona od zeraa
+    <header>
+        <h1>Witaj na mojej stronie!</h1>
+        <nav>
+            <ul>
+                <li><a href="#o-mnie">O mnie</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="o-mnie">
+        <h2>O mnie</h2>
+        <p>Tu możesz napisać coś o sobie lub swojej firmie.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <p>Przykłady Twoich projektów.</p>
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Email: przyklad@mail.com</p>
+    </section>
+
+    <footer>
+        <p>© 2026 Moja Strona</p>
+    </footer>
+</body>
+</html>
+/* Ogólny wygląd strony */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Nagłówek */
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Menu nawigacyjne */
+nav ul {
+    list-style: none; /* usuwa punkty listy */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block; /* pokazuje elementy w jednej linii */
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* usuwa podkreślenie linku */
+}
+
+/* Sekcje */
+section {
+    padding: 40px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+/* Stopka */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+}
+
+
     
