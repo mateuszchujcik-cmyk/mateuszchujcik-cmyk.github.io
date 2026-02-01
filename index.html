@@ -46,6 +46,34 @@
     top: 20px;   /* odległość od góry */
     left: 20px;  /* odległość od lewej */
     text-align: left;
+  /* kontener na zdjęcia pod napisem 3 */
+#zdjecia {
+  display: none;           /* ukryty na początku */
+  position: absolute;
+  top: 120px;              /* trochę poniżej napisu 3 */
+  left: 20px;
+  display: flex;
+  gap: 20px;               /* odstęp między zdjęciami */
+  flex-wrap: wrap;         /* zawijanie zdjęć w kolejnych wierszach */
+}
+
+.zdjecie-box {
+  text-align: center;
+}
+
+.zdjecie-box img {
+  width: 150px;            /* szerokość zdjęcia */
+  height: auto;
+  display: block;
+}
+
+.zdjecie-box span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: orange;           /* napis nad zdjęciem pomarańczowy */
+}
+
 }
 
   }
