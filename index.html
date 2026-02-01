@@ -1,53 +1,83 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Środek strony</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000; /* czarne tło */
-      font-family: Arial, sans-serif;
-      color: orange;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi ekran</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* początkowe tło */
+    font-family: Arial, sans-serif;
+    color: orange;
+    transition: background-color 0.5s;
+  }
 
-    #napis {
-      font-size: 120px;
-      cursor: pointer;
-      transition: transform 0.2s;
-      text-align: center;
-    }
+  .ekran {
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.5s;
+  }
 
-    #napis:hover {
-      transform: scale(1.1);
-    }
+  .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-    #nowa-tresc {
-      font-size: 50px;
-      display: none; /* na początku ukryta */
-      text-align: center;
-    }
-  </style>
+  #napis1 {
+    font-size: 120px;
+  }
+
+  #napis2 {
+    font-size: 70px;
+    display: none;
+  }
+
+  #napis3 {
+    font-size: 60px;
+    display: none;
+    color: #000; /* czarny tekst na jasnym tle */
+  }
+</style>
 </head>
 <body>
 
-  <div id="napis">burdelu sowirzdrzola</div>
-  <div id="nowa-tresc">Witaj w stronie najlepszego burdelu na świecie !</div>
+<div id="napis1" class="ekran">burdel u sowirzdrzola</div>
+<div id="napis2" class="ekran hidden">witaj w najlepszym burdelu na świecie</div>
+<div id="napis3" class="ekran hidden">w naszej ofercie mamy!</div>
 
-  <script>
-    const napis = document.getElementById('napis');
-    const nowaTresc = document.getElementById('nowa-tresc');
+<script>
+  const napis1 = document.getElementById('napis1');
+  const napis2 = document.getElementById('napis2');
+  const napis3 = document.getElementById('napis3');
+  const body = document.body;
 
-    napis.addEventListener('click', () => {
-      napis.style.display = 'none';      // ukrywa stary napis
-      nowaTresc.style.display = 'block';  // pokazuje nową treść
-    });
-  </script>
+  // Klik na pierwszy napis → pokazuje drugi
+  napis1.addEventListener('click', () => {
+    napis1.classList.add('hidden');
+    setTimeout(() => {
+      napis1.style.display = 'none';
+      napis2.style.display = 'block';
+      setTimeout(() => napis2.classList.remove('hidden'), 50);
+    }, 500);
+  });
+
+  // Klik na drugi napis → pokazuje trzeci ekran z jasnym niebieskim tłem
+  napis2.addEventListener('click', () => {
+    napis2.classList.add('hidden');
+    setTimeout(() => {
+      napis2.style.display = 'none';
+      body.style.backgroundColor = '#cceeff'; // bardzo jasny niebieski
+      napis3.style.display = 'block';
+      setTimeout(() => napis3.classList.remove('hidden'), 50);
+    }, 500);
+  });
+</script>
 
 </body>
 </html>
