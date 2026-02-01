@@ -3,22 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multi ekran</title>
+<title>Multi ekran ze zdjęciami</title>
 <style>
   html, body {
     height: 100%;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000; /* początkowe tło */
     font-family: Arial, sans-serif;
-    color: orange;
     transition: background-color 0.5s;
   }
 
   .ekran {
     position: absolute;
+    width: 100%;
     text-align: center;
     cursor: pointer;
     transition: opacity 0.5s;
@@ -30,69 +26,94 @@
   }
 
   #napis1 {
-    font-size: 120px;
+    font-size: 80px;
+    color: orange;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   #napis2 {
     font-size: 70px;
+    color: orange;
     display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-#napis3 {
+  #napis3 {
     font-size: 60px;
     display: none;
-    color: orange; /* pomarańczowy tekst */
+    color: orange;
     position: absolute;
-    top: 20px;   /* odległość od góry */
-    left: 20px;  /* odległość od lewej */
+    top: 20px;
+    left: 20px;
     text-align: left;
-  /* kontener na zdjęcia pod napisem 3 */
-#zdjecia {
-  display: none;           /* ukryty na początku */
-  position: absolute;
-  top: 120px;              /* trochę poniżej napisu 3 */
-  left: 20px;
-  display: flex;
-  gap: 20px;               /* odstęp między zdjęciami */
-  flex-wrap: wrap;         /* zawijanie zdjęć w kolejnych wierszach */
-}
-
-.zdjecie-box {
-  text-align: center;
-}
-
-.zdjecie-box img {
-  width: 150px;            /* szerokość zdjęcia */
-  height: auto;
-  display: block;
-}
-
-.zdjecie-box span {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: orange;           /* napis nad zdjęciem pomarańczowy */
-}
-<div class="zdjecie-box">
-  <span>Napis nad zdjęciem 1</span>
-  <img src="https://cdn.discordapp.com/attachments/1374411538840027237/1464766141418442914/image.png?ex=69808c86&is=697f3b06&hm=859d1a5828e94600bc931eb1626d3bdbeececf33c16a293c9ef9f55db6e7598a&" alt="Zdjęcie 1">
-</div>
-
-}
-
   }
+
+  /* kontener na zdjęcia pod napisem 3 */
+  #zdjecia {
+    display: none;
+    position: absolute;
+    top: 120px; /* trochę poniżej napisu */
+    left: 20px;
+    display: flex;
+    gap: 20px; /* odstęp między zdjęciami */
+    flex-wrap: wrap; /* zawijanie zdjęć w kolejnych wierszach */
+  }
+
+  .zdjecie-box {
+    text-align: center;
+  }
+
+  .zdjecie-box img {
+    width: 150px; /* szerokość obrazka */
+    height: auto;
+    display: block;
+  }
+
+  .zdjecie-box span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: orange; /* napis nad zdjęciem pomarańczowy */
+  }
+
 </style>
 </head>
 <body>
 
-<div id="napis1" class="ekran">burdel u sowirzdrzola</div>
-<div id="napis2" class="ekran hidden">witaj w najlepszym burdelu na świecie</div>
-<div id="napis3" class="ekran hidden">w naszej ofercie mamy!</div>
+<!-- Pierwszy ekran -->
+<div id="napis1" class="ekran">burdelu sowirzdrzola</div>
+
+<!-- Drugi ekran -->
+<div id="napis2" class="ekran hidden">Druga strona - kliknij dalej!</div>
+
+<!-- Trzeci ekran -->
+<div id="napis3" class="ekran hidden">Trzecia strona gotowa!</div>
+
+<!-- Zdjęcia pod trzecim napisem -->
+<div id="zdjecia">
+  <div class="zdjecie-box">
+    <span>Napis nad zdjęciem 1</span>
+    <img src="https://cdn.discordapp.com/attachments/1374411538840027237/1464766141418442914/image.png?ex=69808c86&is=697f3b06&hm=859d1a5828e94600bc931eb1626d3bdbeececf33c16a293c9ef9f55db6e7598a&" alt="Zdjęcie 1">
+  </div>
+  <div class="zdjecie-box">
+    <span>Napis nad zdjęciem 2</span>
+    <img src="https://via.placeholder.com/150" alt="Zdjęcie 2">
+  </div>
+  <div class="zdjecie-box">
+    <span>Napis nad zdjęciem 3</span>
+    <img src="https://via.placeholder.com/150" alt="Zdjęcie 3">
+  </div>
+</div>
 
 <script>
   const napis1 = document.getElementById('napis1');
   const napis2 = document.getElementById('napis2');
   const napis3 = document.getElementById('napis3');
+  const zdjecia = document.getElementById('zdjecia');
   const body = document.body;
 
   // Klik na pierwszy napis → pokazuje drugi
@@ -105,14 +126,17 @@
     }, 500);
   });
 
-  // Klik na drugi napis → pokazuje trzeci ekran z jasnym niebieskim tłem
+  // Klik na drugi napis → pokazuje trzeci ekran z jasnym niebieskim tłem i zdjęciami
   napis2.addEventListener('click', () => {
     napis2.classList.add('hidden');
     setTimeout(() => {
       napis2.style.display = 'none';
       body.style.backgroundColor = '#cceeff'; // bardzo jasny niebieski
       napis3.style.display = 'block';
-      setTimeout(() => napis3.classList.remove('hidden'), 50);
+      zdjecia.style.display = 'flex';
+      setTimeout(() => {
+        napis3.classList.remove('hidden');
+      }, 50);
     }, 500);
   });
 </script>
