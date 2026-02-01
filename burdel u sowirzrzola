@@ -1,0 +1,12 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Moja strona</title>
+</head>
+<body>
+  <h1>DZIAŁA KURWA</h1>
+  <p>To jest moja strona na GitHub Pages.</p>
+</body>
+</html>
